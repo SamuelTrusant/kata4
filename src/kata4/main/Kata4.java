@@ -11,10 +11,29 @@ public class Kata4 {
 
     public static void main(String[] args) {
         String fileName = "email.txt";
-        List<Mail> mailList = MailListReader.read(fileName);
-        Histogram histograma = MailHistogramBuilder.build(mailList);
-        HistogramDisplay histogram = new HistogramDisplay(histograma);
+        control(fileName);
+    }
+
+    private static List<Mail> mailList;
+    private static Histogram histograma;
+    private static HistogramDisplay histogram;
+    
+    private static void control(String fileName){
+        input(fileName);
+        process();
+        output();
+    }
+
+    private static void input(String fileName) {
+       mailList = MailListReader.read(fileName);
+    }
+
+    private static void process(){
+        histograma = MailHistogramBuilder.build(mailList);
+    }
+
+    private static void output() {
+        histogram = new HistogramDisplay(histograma);
         histogram.execute();
     }
-    
 }
